@@ -6,7 +6,7 @@
 
 [[ArXiv]](https://arxiv.org/abs/1904.07223) [[YouTube]](https://www.youtube.com/watch?v=ubCrEAIpQs4) [[Poster]](http://zdzheng.xyz/images/DGNet_poster.pdf)
 
-Here we provide our training and testing code for our paper [Joint Discriminative and Generative Learning for Person Re-identification (CVPR19 Oral)](https://arxiv.org/abs/1904.07223).
+Here we provide the training and testing code for our paper [Joint Discriminative and Generative Learning for Person Re-identification (CVPR 2019 Oral)](https://arxiv.org/abs/1904.07223).
 
 
 ## Prerequisites
@@ -71,7 +71,7 @@ If you want to have it trained by yourself, please check the [person re-id basel
 ```
 python train.py --config configs/latest.yaml
 ```
-Or training with low precision (fp16)
+Or train with low precision (fp16)
 ```
 python train.py --config configs/latest-fp16.yaml
 ```
@@ -83,7 +83,7 @@ Intermediate image outputs and model binary files are saved in `outputs/latest`.
 ```
 
 ## Citation
-Please cite this paper in your publications if it helps your research:
+Please cite this paper if it helps your research:
 ```
 @article{zheng2019joint,
   title={Joint discriminative and generative learning for person re-identification},

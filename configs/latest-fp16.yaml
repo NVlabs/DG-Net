@@ -1,0 +1,84 @@
+# Copyright (C) 2017 NVIDIA Corporation.  All rights reserved.
+# Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
+
+apex: true                       # Set True to use float16.
+B_w: 0.2                         # The loss weight of fine-grained loss
+ID_class: 751                    # The number of ID classes in the dataset. For example, 751 for Market, 702 for DukeMTMC
+ID_stride: 1                     # Stride in Appearance encoder
+ID_style: AB                     # For time being, we only support AB. In the future, we will support PCB.
+batch_size: 8                    # BatchSize
+beta1: 0                         # Adam hyperparameter
+beta2: 0.999                     # Adam hyperparameter
+crop_image_height: 256           # Input height
+crop_image_width: 128            # Input width
+data_root: ../Market/pytorch/    # Dataset Root
+dis:              
+  LAMBDA: 0.01                   # the hyperparameter for the regularization term
+  activ: lrelu                   # activation function style [relu/lrelu/prelu/selu/tanh]
+  dim: 32                        # number of filters in the bottommost layer
+  gan_type: lsgan                # GAN loss [lsgan/nsgan]
+  n_layer: 2                     # number of layers in D
+  n_res: 4                       # number of layers in D
+  non_local: 0                   # number of non_local layers
+  norm: none                     # normalization layer [none/bn/in/ln]
+  num_scales: 3                  # number of scales
+  pad_type: reflect              # padding type [zero/reflect]
+display_size: 16                 # How much display images
+erasing_p: 0.5                   # Random erasing probability [0-1]
+gamma: 0.1                       # Learning Rate Decay (except appearance encoder)
+gamma2: 0.1                      # Learning Rate Decay (for appearance encoder)
+gan_w: 1                         # the weight of gan loss
+gen:
+  activ: lrelu                   # activation function style [relu/lrelu/prelu/selu/tanh]
+  dec: basic                     # [basic/parallel/series]
+  dim: 16                        # number of filters in the bottommost layer
+  dropout: 0                     # use dropout in the generator
+  id_dim: 2048                   # length of appearance code
+  mlp_dim: 512                   # number of filters in MLP
+  mlp_norm: none                 # norm in mlp [none/bn/in/ln]
+  n_downsample: 2                # number of downsampling layers in content encoder
+  n_res: 4                       # number of residual blocks in content encoder/decoder
+  non_local: 0                   # number of non_local layer
+  pad_type: reflect              # padding type [zero/reflect]
+  tanh: false                    # use tanh or not at the last layer
+  init: kaiming                  # initialization [gaussian/kaiming/xavier/orthogonal]
+id_w: 1.0                        # the weight of ID loss
+image_display_iter: 5000         # How often do you want to display output images during training
+image_save_iter: 5000            # How often do you want to save output images during training
+input_dim_a: 1                   # We use the gray-scale input, so the input dim is 1
+input_dim_b: 1                   # We use the gray-scale input, so the input dim is 1
+log_iter: 1                      # How often do you want to log the training stats
+lr2: 0.002                       # initial appearance encoder learning rate
+lr_d: 0.0001                     # initial discriminator learning rate
+lr_g: 0.0001                     # initial generator (except appearance encoder) learning rate
+lr_policy: multistep             # learning rate scheduler [multistep|constant|step]
+max_cyc_w: 2                     # the maximum weight for cycle loss
+max_iter: 100000                 # When you end the training
+max_teacher_w: 2                 # the maximum weight for prime loss (teacher KL loss)
+max_w: 1                         # the maximum weight for feature reconstruction losses
+new_size: 128                    # the resized size  
+norm_id: false                   # Do we normalize the appearance code
+num_workers: 8                   # nworks to load the data
+pid_w: 1.0                       # positive ID loss
+pool: max                        # pooling layer for the appearance encoder
+recon_s_w: 0                     # the initial weight for structure code reconstruction
+recon_f_w: 0                     # the initial weight for appearance code reconstruction
+recon_id_w: 0.5                  # the initial weight for ID reconstruction
+recon_x_cyc_w: 0                 # the initial weight for cycle reconstruction
+recon_x_w: 5                     # the initial weight for self-reconstruction
+recon_xp_w: 5                    # the initial weight for self-identity reconstruction
+single: gray                     # make input to gray-scale
+snapshot_save_iter: 10000        # How often to save the checkpoint 
+sqrt: false                      # whether use square loss.
+step_size: 60000                 # when to decay the learning rate
+teacher: best                    # teacher model name. For DukeMTMC, you may set `best-duke`
+teacher_w: 0                     # the initial weight for prime loss (teacher KL loss)
+teacher_style: 0                 # select teacher style.[0-4] # 0: Our smooth dynamic label# 1: Pseudo label, hard dynamic label# 2: Conditional label, hard static label # 3: LSRO, static smooth label# 4: Dynamic Soft Two-label
+train_bn: true                   # whether we train the bn for the generated image.
+use_decoder_again: true          # whether we train the decoder on the generatd image.
+use_encoder_again: 0.5           # the probability we train the structure encoder on the generatd image.
+vgg_w: 0                         # We do not use vgg as one kind of inception loss.
+warm_iter: 30000                 # when to start warm up the losses (fine-grained/feature reconstruction losses).
+warm_scale: 0.0005               # how fast to warm up
+warm_teacher_iter: 30000         # when to start warm up the prime loss
+weight_decay: 0.0005             # weight decay

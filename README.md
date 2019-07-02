@@ -18,7 +18,7 @@ Joint Discriminative and Generative Learning for Person Re-identification, CVPR 
     * [Dataset Preparation](#dataset-preparation)
     * [Testing](#testing)
     * [Training](#training)
-* [Tips for Training with Other Datasets](#tips)
+* [Tips](#tips)
 * [Citation](#citation)
 * [Related Work](#related-work)
 

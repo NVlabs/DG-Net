@@ -6,13 +6,12 @@
 
 [[Paper]](https://arxiv.org/abs/1904.07223) [[YouTube]](https://www.youtube.com/watch?v=ubCrEAIpQs4) [[Bilibili]](https://www.bilibili.com/video/av51439240) [[Poster]](http://zdzheng.xyz/images/DGNet_poster.pdf)
 
-Joint Discriminative and Generative Learning for Person Re-identification <br>
+Joint Discriminative and Generative Learning for Person Re-identification, CVPR 2019 (Oral)<br>
 [Zhedong Zheng](http://zdzheng.xyz/), [Xiaodong Yang](https://xiaodongyang.org/), [Zhiding Yu](https://chrisding.github.io/), [Liang Zheng](http://liangzheng.com.cn/), [Yi Yang](https://www.uts.edu.au/staff/yi.yang), [Jan Kautz](http://jankautz.com/) <br>
-In CVPR 2019 (Oral).
 
 ## Table of contents
-* [Features](#features)
 * [License](#license)
+* [Features](#features)
 * [Prerequisites](#prerequisites)
 * [Getting Started](#getting-started)
     * [Installation](#installation)
@@ -23,14 +22,6 @@ In CVPR 2019 (Oral).
 * [Citation](#citation)
 * [Related Work](#related-work)
 
-## Features
-We have supported:
-- Float16 to save GPU memory based on [APEX](https://github.com/NVIDIA/apex)
-- Multiple query evaluation
-- Random erasing
-- Visualize training curves
-- Generate all figures in the paper 
-
 ## License
 
 Copyright (C) 2019 NVIDIA Corporation.
@@ -39,6 +30,14 @@ All rights reserved.
 Licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode) (**Attribution-NonCommercial-ShareAlike 4.0 International**)
 
 The code is released for academic research use only. For commercial use, please contact [researchinquiries@nvidia.com](researchinquiries@nvidia.com).
+
+## Features
+We have supported:
+- Float16 to save GPU memory based on [APEX](https://github.com/NVIDIA/apex)
+- Multiple query evaluation
+- Random erasing
+- Visualize training curves
+- Generate all figures in the paper 
 
 ## Prerequisites
 

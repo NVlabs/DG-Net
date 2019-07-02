@@ -51,7 +51,7 @@ We have supported:
 ## Getting Started
 ### Installation
 - Install PyTorch from http://pytorch.org/
-- Install TorchVision from the source:
+- Install torchvision from the source:
 ```
 git clone https://github.com/pytorch/vision
 cd vision
@@ -69,7 +69,7 @@ git clone https://github.com/NVlabs/DG-Net.git
 cd DG-Net/
 ```
 
-Our code is tested on PyTorch 1.0.0+ and TorchVision 0.2.1+ .
+Our code is tested on PyTorch 1.0.0+ and torchvision 0.2.1+ .
 
 ### Dataset Preparation
 Download the dataset [Market-1501](http://www.liangzheng.com.cn/Project/project_reid.html) 

@@ -4,7 +4,7 @@
 ## Joint Discriminative and Generative Learning for Person Re-identification
 ![](NxN.jpg)
 
-[[ArXiv]](https://arxiv.org/abs/1904.07223) [[YouTube]](https://www.youtube.com/watch?v=ubCrEAIpQs4) [[Poster]](http://zdzheng.xyz/images/DGNet_poster.pdf)
+[[ArXiv]](https://arxiv.org/abs/1904.07223) [[YouTube]](https://www.youtube.com/watch?v=ubCrEAIpQs4) [[Bilibili]](https://www.bilibili.com/video/av51439240) [[Poster]](http://zdzheng.xyz/images/DGNet_poster.pdf)
 
 Here we provide the training and testing code for our paper [Joint Discriminative and Generative Learning for Person Re-identification (CVPR 2019 Oral)](https://arxiv.org/abs/1904.07223).
 

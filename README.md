@@ -8,6 +8,25 @@
 
 Here we provide the training and testing code for our paper [Joint Discriminative and Generative Learning for Person Re-identification (CVPR 2019 Oral)](https://arxiv.org/abs/1904.07223).
 
+## Table of contents
+* [Features](#features)
+* [Prerequisites](#prerequisites)
+* [Getting Started](#getting-started)
+    * [Installation](#installation)
+    * [Dataset Preparation](#dataset-preparation)
+    * [Testing](#testing)
+    * [Training](#training)
+* [Tips for training with other datasets](#tips)
+* [Citation](#citation)
+* [Related Work](#related-work)
+
+## Features
+Now we have supported:
+- Float16 to Save GPU Memory based on [apex](https://github.com/NVIDIA/apex)
+- Multiple Query Evaluation
+- Random Erasing
+- Visualize Training Curves
+- Generate all Figures in the paper. 
 
 ## Prerequisites
 
@@ -16,9 +35,28 @@ Here we provide the training and testing code for our paper [Joint Discriminativ
 - GPU Memory >= 10G (for fp16)
 - NumPy
 - PyTorch 1.0+
-- [Optional] APEX (for fp16) 
+- [Optional] APEX (for fp16)
 
-## Dataset Preparation
+## Getting started
+### Installation
+- Install Pytorch from http://pytorch.org/
+- Install Torchvision from the source
+```
+git clone https://github.com/pytorch/vision
+cd vision
+python setup.py install
+```
+- [Optinal] You may skip it. Install apex from the source
+```
+git clone https://github.com/NVIDIA/apex.git
+cd apex
+python setup.py install --cuda_ext --cpp_ext
+```
+Because pytorch and torchvision are ongoing projects.
+
+Here we noted that our code is tested based on Pytorch 1.0.0+ and Torchvision 0.2.1+ .
+
+### Dataset Preparation
 Download the dataset [Market-1501](http://www.liangzheng.com.cn/Project/project_reid.html) 
 
 Preparation: put the images with the same id in one folder. You may use 
@@ -27,8 +65,9 @@ python prepare-market.py          # for Market-1501
 ```
 Remember to modify the dataset path to your own path.
 
-## Testing
-### Download the trained model
+### Testing
+
+#### Download the trained model
 We provide our [trained model](https://drive.google.com/open?id=1lL18FZX1uZMWKzaZOuPe3IuAdfUYyJKH). You may download and move it to the `outputs`.
 ```
 ├── outputs/
@@ -36,11 +75,11 @@ We provide our [trained model](https://drive.google.com/open?id=1lL18FZX1uZMWKza
 ├── models
 │   ├── best/                   
 ```
-### Person re-id evaluation
+#### Person re-id evaluation
 
 Please check the `README.md` in the `./reid_eval`.
 
-### Image generation evaluation
+#### Image generation evaluation
 
 Please check the `README.md` in the `./visual_tools`. 
 
@@ -51,9 +90,9 @@ You may use the `./visual_tools/test_folder.py` to generate lots of images and t
 - FID https://github.com/layumi/TTUR  (To evaluate, you need to install `tensorflow-gpu`)
 
 
-## Training
+### Training
 
-### Train a teacher model
+#### Train a teacher model
 You may directly download our trained teacher model from [trained model](https://drive.google.com/open?id=1lL18FZX1uZMWKzaZOuPe3IuAdfUYyJKH).
 If you want to have it trained by yourself, please check the [person re-id baseline](https://github.com/layumi/Person_reID_baseline_pytorch) repository to train a teacher model, then copy and put it in the `./models`.
 ```
@@ -63,7 +102,7 @@ If you want to have it trained by yourself, please check the [person re-id basel
 │       ├── ...
 ```
 
-### Train DG-Net 
+#### Train DG-Net 
 1. Setup the yaml file. Check out `configs/latest.yaml`. Change the data_root field to the path of your prepared folder-based dataset, e.g. `../Market-1501/pytorch`.
 
 
@@ -82,6 +121,13 @@ Intermediate image outputs and model binary files are saved in `outputs/latest`.
  tensorboard --logdir logs/latest
 ```
 
+## Tips
+Notes the format of the camera id and the number of cameras.
+
+For some dataset, e.g., MSMT17, there are more than 10 cameras. You need to modify the `prepare.py` and evaluation codes to read the double-digit camera ID.
+
+For some vehicle re-ID datasets. e.g. VeRi, you also need to modify the `prepare.py` and evaluation codes.  It has different naming rules.
+
 ## Citation
 Please cite this paper if it helps your research:
 ```
@@ -93,7 +139,7 @@ Please cite this paper if it helps your research:
 }
 ```
 
-### Related Work
+## Related Work
 
 Other GAN-based methods compared in the paper: we forked the code and made some changes for evaluatation. Thank authors for their great work.
 

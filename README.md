@@ -16,17 +16,17 @@ Here we provide the training and testing code for our paper [Joint Discriminativ
     * [Dataset Preparation](#dataset-preparation)
     * [Testing](#testing)
     * [Training](#training)
-* [Tips for training with other datasets](#tips)
+* [Tips for Training with Other Datasets](#tips)
 * [Citation](#citation)
 * [Related Work](#related-work)
 
 ## Features
-Now we have supported:
-- Float16 to Save GPU Memory based on [apex](https://github.com/NVIDIA/apex)
-- Multiple Query Evaluation
-- Random Erasing
-- Visualize Training Curves
-- Generate all Figures in the paper. 
+We have supported:
+- Float16 to save GPU memory based on [APEX](https://github.com/NVIDIA/apex)
+- Multiple query evaluation
+- Random erasing
+- Visualize training curves
+- Generate all figures in the paper 
 
 ## Prerequisites
 
@@ -37,24 +37,23 @@ Now we have supported:
 - PyTorch 1.0+
 - [Optional] APEX (for fp16)
 
-## Getting started
+## Getting Started
 ### Installation
-- Install Pytorch from http://pytorch.org/
-- Install Torchvision from the source
+- Install PyTorch from http://pytorch.org/
+- Install TorchVision from the source:
 ```
 git clone https://github.com/pytorch/vision
 cd vision
 python setup.py install
 ```
-- [Optinal] You may skip it. Install apex from the source
+- [Optinal] You may skip it. Install APEX from the source:
 ```
 git clone https://github.com/NVIDIA/apex.git
 cd apex
 python setup.py install --cuda_ext --cpp_ext
 ```
-Because pytorch and torchvision are ongoing projects.
 
-Here we noted that our code is tested based on Pytorch 1.0.0+ and Torchvision 0.2.1+ .
+Our code is tested on PyTorch 1.0.0+ and TorchVision 0.2.1+ .
 
 ### Dataset Preparation
 Download the dataset [Market-1501](http://www.liangzheng.com.cn/Project/project_reid.html) 
@@ -63,7 +62,7 @@ Preparation: put the images with the same id in one folder. You may use
 ```bash
 python prepare-market.py          # for Market-1501
 ```
-Remember to modify the dataset path to your own path.
+Note to modify the dataset path to your own path.
 
 ### Testing
 
@@ -122,11 +121,11 @@ Intermediate image outputs and model binary files are saved in `outputs/latest`.
 ```
 
 ## Tips
-Notes the format of the camera id and the number of cameras.
+Note the format of the camera id and the number of cameras.
 
-For some dataset, e.g., MSMT17, there are more than 10 cameras. You need to modify the `prepare.py` and evaluation codes to read the double-digit camera ID.
+For some datasets (e.g., MSMT17), there are more than 10 cameras. You need to modify the prepariation and evaluation code to read the double-digit camera id.
 
-For some vehicle re-ID datasets. e.g. VeRi, you also need to modify the `prepare.py` and evaluation codes.  It has different naming rules.
+For some vehicle re-id datasets (e.g., VeRi) having different naming rules, you also need to modify the preparition and evaluation code.
 
 ## Citation
 Please cite this paper if it helps your research:

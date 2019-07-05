@@ -92,7 +92,7 @@ We provide our trained model. You may download it from [GoogleDrive](https://dri
 ```
 #### Person re-id evaluation
 
-|   | Market-1501  | DukeMTMC-reID  | MSMT-17  | CUHK03-NP |
+|   | Market-1501  | Duke  | MSMT-17  | CUHK03-NP |
 |---|--------------|----------------|----------|-----------|
 | Rank@1 | 94.8% | 86.6% | 77.2% | 65.6% |
 | mAP    | 86.0% | 74.8% | 52.3% | 61.1% |

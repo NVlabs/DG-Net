@@ -83,7 +83,7 @@ Note to modify the dataset path to your own path.
 ### Testing
 
 #### Download the trained model
-We provide our [trained model](https://drive.google.com/open?id=1lL18FZX1uZMWKzaZOuPe3IuAdfUYyJKH). You may download and move it to the `outputs`.
+We provide our trained model. You may download it from [GoogleDrive](https://drive.google.com/open?id=1lL18FZX1uZMWKzaZOuPe3IuAdfUYyJKH) or ([BaiduDisk](https://pan.baidu.com/s/1503831XfW0y4g3PHir91yw) password: rqvf). You may download and move it to the `outputs`.
 ```
 ├── outputs/
 │   ├── E0.5new_reid0.5_w30000
@@ -92,7 +92,12 @@ We provide our [trained model](https://drive.google.com/open?id=1lL18FZX1uZMWKza
 ```
 #### Person re-id evaluation
 
-Please check the `README.md` in the `./reid_eval`.
+|   | Market-1501  | DukeMTMC-reID  | MSMT-17  | CUHK03-NP |
+|---|--------------|----------------|----------|-----------|
+| Rank@1 | 94.8% | 86.6% | 77.2% | 65.6% |
+| mAP    | 86.0% | 74.8% | 52.3% | 61.1% |
+
+For more details, please check the `README.md` in the `./reid_eval`.
 
 #### Image generation evaluation
 

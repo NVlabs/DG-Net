@@ -144,7 +144,7 @@ Intermediate image outputs and model binary files are saved in `outputs/latest`.
 ## Tips
 Note the format of the camera id and the number of cameras.
 
-For some datasets (e.g., MSMT17), there are more than 10 cameras. You need to modify the prepariation and evaluation code to read the double-digit camera id.
+For some datasets (e.g., MSMT17), there are more than 10 cameras. You need to modify the preparation and evaluation code to read the double-digit camera id.
 
 For some vehicle re-id datasets (e.g., VeRi) having different naming rules, you also need to modify the preparition and evaluation code.
 

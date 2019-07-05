@@ -108,7 +108,7 @@ You may use the `./visual_tools/test_folder.py` to generate lots of images and t
 ### Training
 
 #### Train a teacher model
-You may directly download our trained teacher model from [trained model](https://drive.google.com/open?id=1lL18FZX1uZMWKzaZOuPe3IuAdfUYyJKH).
+You may directly download our trained teacher model from [GoogleDrive](https://drive.google.com/open?id=1lL18FZX1uZMWKzaZOuPe3IuAdfUYyJKH) or ([BaiduDisk](https://pan.baidu.com/s/1503831XfW0y4g3PHir91yw) password: rqvf).
 If you want to have it trained by yourself, please check the [person re-id baseline](https://github.com/layumi/Person_reID_baseline_pytorch) repository to train a teacher model, then copy and put it in the `./models`.
 ```
 ├── models/

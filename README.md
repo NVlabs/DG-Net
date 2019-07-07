@@ -58,7 +58,7 @@ git clone https://github.com/pytorch/vision
 cd vision
 python setup.py install
 ```
-- [Optinal] You may skip it. Install APEX from the source:
+- [Optional] You may skip it. Install APEX from the source:
 ```
 git clone https://github.com/NVIDIA/apex.git
 cd apex

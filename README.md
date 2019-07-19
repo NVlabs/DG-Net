@@ -153,7 +153,7 @@ We provide our generated images and make a large-scale synthetic dataset called 
 | #images| 128,307 |  12,936     |
 
 ## Tips
-Note the format of the camera id and the number of cameras. For some datasets (e.g., MSMT17), there are more than 10 cameras. You need to modify the preparation and evaluation code to read the double-digit camera id. For some vehicle re-id datasets (e.g., VeRi) having different naming rules, you also need to modify the preparation and evaluation code.
+Note the format of camera id and number of cameras. For some datasets (e.g., MSMT17), there are more than 10 cameras. You need to modify the preparation and evaluation code to read the double-digit camera id. For some vehicle re-id datasets (e.g., VeRi) having different naming rules, you also need to modify the preparation and evaluation code.
 
 ## Citation
 Please cite this paper if it helps your research:

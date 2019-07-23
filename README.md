@@ -92,6 +92,7 @@ We provide our trained model. You may download it from [GoogleDrive](https://dri
 │   ├── best/                   
 ```
 #### Person re-id evaluation
+- Supervised Learning.
 
 |   | Market-1501  | DukeMTMC-reID  | MSMT17  | CUHK03-NP |
 |---|--------------|----------------|----------|-----------|
@@ -99,6 +100,16 @@ We provide our trained model. You may download it from [GoogleDrive](https://dri
 | mAP    | 86.0% | 74.8% | 52.3% | 61.1% |
 
 For more details, please check the `README.md` in the `./reid_eval`.
+
+
+- Transfer Learning. 
+To verify the scalability of the proposed DG-Net, we train the model on Dataset A and test the model on Dataset B. 
+We denote the transfer learning protocol as `A → B`
+
+|   | Market-1501 → DukeMTMC-reID  | DukeMTMC-reID → Market-1501 |
+|---|--------------|----------------|
+| Rank@1 | 43.5% | 54.0% | 
+| mAP    | 25.4% | 26.1% |
 
 #### Image generation evaluation
 

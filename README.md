@@ -51,7 +51,7 @@ We have supported:
 
 ## Getting Started
 ### Installation
-- Install PyTorch from http://pytorch.org/
+- Install [PyTorch](http://pytorch.org/) 
 - Install torchvision from the source:
 ```
 git clone https://github.com/pytorch/vision
@@ -64,7 +64,7 @@ git clone https://github.com/NVIDIA/apex.git
 cd apex
 python setup.py install --cuda_ext --cpp_ext
 ```
-- Clone this repo.
+- Clone this repo
 ```bash
 git clone https://github.com/NVlabs/DG-Net.git
 cd DG-Net/
@@ -100,7 +100,6 @@ We provide our trained model. You may download it from [GoogleDrive](https://dri
 | mAP    | 86.0% | 74.8% | 52.3% | 61.1% |
 
 
-
 - Transfer learning     
 To verify the generalizability of DG-Net, we train the model on dataset A and directly test the model on dataset B (with no adaptation). 
 We denote the direct transfer learning protocol as `A → B`.
@@ -114,12 +113,7 @@ We denote the direct transfer learning protocol as `A → B`.
 
 Please check the `README.md` in the `./visual_tools`. 
 
-You may use the `./visual_tools/test_folder.py` to generate lots of images and then do the evaluation. The only thing you need to modify is the data path.
-
-- SSIM https://github.com/layumi/PerceptualSimilarity
-
-- FID https://github.com/layumi/TTUR  (To evaluate, you need to install `tensorflow-gpu`)
-
+You may use the `./visual_tools/test_folder.py` to generate lots of images and then do the evaluation. The only thing you need to modify is the data path in [SSIM](https://github.com/layumi/PerceptualSimilarity) and [FID](https://github.com/layumi/TTUR).
 
 ### Training
 

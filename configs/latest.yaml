@@ -1,8 +1,8 @@
 # Copyright (C) 2017 NVIDIA Corporation.  All rights reserved.
 # Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
 
-apex: false                       # Set True to use float16.
-B_w: 0.2                         # The loss weight of fine-grained loss
+apex: false                      # Set True to use float16.
+B_w: 0.2                         # The loss weight of fine-grained loss, which is named as `alpha` in the paper.
 ID_class: 751                    # The number of ID classes in the dataset. For example, 751 for Market, 702 for DukeMTMC
 ID_stride: 1                     # Stride in Appearance encoder
 ID_style: AB                     # For time being, we only support AB. In the future, we will support PCB.

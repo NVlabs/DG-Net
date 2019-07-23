@@ -129,7 +129,7 @@ You may directly download our trained teacher model from [GoogleDrive](https://d
 If you want to have it trained by yourself, please check the [person re-id baseline](https://github.com/layumi/Person_reID_baseline_pytorch) repository to train a teacher model, then copy and put it in the `./models`.
 ```
 ├── models/
-│   ├── best/                   /* teacher Model for Market-1501
+│   ├── best/                   /* teacher model for Market-1501
 │       ├── net_last.pth        /* model file
 │       ├── ...
 ```

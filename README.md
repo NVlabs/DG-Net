@@ -99,7 +99,6 @@ We provide our trained model. You may download it from [GoogleDrive](https://dri
 | Rank@1 | 94.8% | 86.6% | 77.2% | 65.6% |
 | mAP    | 86.0% | 74.8% | 52.3% | 61.1% |
 
-For more details, please check the `README.md` in the `./reid_eval`.
 
 
 - Transfer learning     

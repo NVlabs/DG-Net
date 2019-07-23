@@ -102,7 +102,7 @@ We provide our trained model. You may download it from [GoogleDrive](https://dri
 For more details, please check the `README.md` in the `./reid_eval`.
 
 
-- Transfer learning 
+- Transfer learning     
 To verify the generalizability of DG-Net, we train the model on dataset A and directly test the model on dataset B (with no adaptation). 
 We denote the direct transfer learning protocol as `A → B`
 

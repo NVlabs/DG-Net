@@ -170,7 +170,7 @@ def load_config(name):
 
 
 class DGNet_Trainer(nn.Module):
-    def __init__(self, hyperparameters, gpu_ids):
+    def __init__(self, hyperparameters, gpu_ids=[0]):
         super(DGNet_Trainer, self).__init__()
         lr_g = hyperparameters['lr_g']
         lr_d = hyperparameters['lr_d']

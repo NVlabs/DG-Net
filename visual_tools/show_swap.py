@@ -9,12 +9,11 @@ from utils import get_config
 from trainer import DGNet_Trainer, to_gray
 import argparse
 from torch.autograd import Variable
-import torchvision.utils as vutils
 import sys
 import torch
 import os
 import numpy as np
-from torchvision import datasets, models, transforms
+from torchvision import datasets, transforms
 from PIL import Image
 try:
     from itertools import izip as zip
@@ -115,7 +114,6 @@ def generate(data, data2):
     bg_img = Variable(bg_img.cuda())
     id_img, _ = data
     id_img = Variable(id_img.cuda())
-    n, c, h, w = id_img.size()
     # Start testing
     s = encode(bg_img)
     f, _ = id_encode(id_img)

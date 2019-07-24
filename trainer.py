@@ -25,7 +25,6 @@ try:
     from apex.fp16_utils import *
 except ImportError:
     print('This is not an error. If you want to use low precision, i.e., fp16, please install the apex with cuda support (https://github.com/NVIDIA/apex) and update pytorch to 1.0')
-    pass
 
 
 def to_gray(half=False): #simple
@@ -171,7 +170,7 @@ def load_config(name):
 
 
 class DGNet_Trainer(nn.Module):
-    def __init__(self, hyperparameters):
+    def __init__(self, hyperparameters, gpu_ids):
         super(DGNet_Trainer, self).__init__()
         lr_g = hyperparameters['lr_g']
         lr_d = hyperparameters['lr_d']
@@ -224,7 +223,6 @@ class DGNet_Trainer(nn.Module):
                 self.teacher_model = self.teacher_model.apply(train_bn)
 
         self.instancenorm = nn.InstanceNorm2d(512, affine=False)
-        display_size = int(hyperparameters['display_size'])
 
         # RGB to one channel
         if hyperparameters['single']=='edge':

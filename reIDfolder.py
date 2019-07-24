@@ -7,7 +7,6 @@ from torchvision import datasets
 import os
 import numpy as np
 import random
-import torch
 
 class ReIDFolder(datasets.ImageFolder):
 

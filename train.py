@@ -46,14 +46,28 @@ config['vgg_model_path'] = opts.output_path
 
 # Setup model and data loader
 if opts.trainer == 'DGNet':
-    trainer = DGNet_Trainer(config)
+    trainer = DGNet_Trainer(config, gpu_ids)
+    trainer.cuda()
 
-if num_gpu == 1:
-    trainer.cuda()
-else:
-    trainer.cuda()
-    print('Use multiple gpu')
-    trainer = torch.nn.DataParallel(trainer, device_ids = gpu_ids)
+if num_gpu>1:
+    #torch.distributed.init_process_group(backend='nccl', init_method='tcp://127.0.0.1:8001',
+    #                                     world_size = 1, rank = 0)
+    #trainer = torch.nn.parallel.DistributedDataParallel(trainer, device_ids=gpu_ids)
+
+    trainer.teacher_model = torch.nn.DataParallel(trainer.teacher_model, gpu_ids)
+    trainer.id_a = torch.nn.DataParallel(trainer.id_a, gpu_ids)
+    trainer.gen_a.enc_content = torch.nn.DataParallel(trainer.gen_a.enc_content, gpu_ids)
+    trainer.gen_a.dec = torch.nn.DataParallel(trainer.gen_a.dec, gpu_ids)
+    trainer.gen_a.mlp_w1 = torch.nn.DataParallel(trainer.gen_a.mlp_w1, gpu_ids)
+    trainer.gen_a.mlp_w2 = torch.nn.DataParallel(trainer.gen_a.mlp_w2, gpu_ids)
+    trainer.gen_a.mlp_w3 = torch.nn.DataParallel(trainer.gen_a.mlp_w3, gpu_ids)
+    trainer.gen_a.mlp_w4 = torch.nn.DataParallel(trainer.gen_a.mlp_w4, gpu_ids)
+    trainer.gen_a.mlp_b1 = torch.nn.DataParallel(trainer.gen_a.mlp_b1, gpu_ids)
+    trainer.gen_a.mlp_b2 = torch.nn.DataParallel(trainer.gen_a.mlp_b2, gpu_ids)
+    trainer.gen_a.mlp_b3 = torch.nn.DataParallel(trainer.gen_a.mlp_b3, gpu_ids)
+    trainer.gen_a.mlp_b4 = torch.nn.DataParallel(trainer.gen_a.mlp_b4, gpu_ids)
+    for dis_model in trainer.dis_a.cnns:
+        dis_model = torch.nn.DataParallel(dis_model, gpu_ids)
 
 random.seed(7) #fix random result
 train_loader_a, train_loader_b, test_loader_a, test_loader_b = get_all_data_loaders(config)
@@ -95,23 +109,15 @@ print('Note that dataloader may hang with too much nworkers.')
 
 while True:
     for it, ((images_a,labels_a, pos_a),  (images_b, labels_b, pos_b)) in enumerate(zip(train_loader_a, train_loader_b)):
-        if num_gpu==1:
-            trainer.update_learning_rate()
-        else:
-            trainer.module.update_learning_rate()
-
+        trainer.update_learning_rate()
         images_a, images_b = images_a.cuda().detach(), images_b.cuda().detach()
         pos_a, pos_b = pos_a.cuda().detach(), pos_b.cuda().detach()
         labels_a, labels_b = labels_a.cuda().detach(), labels_b.cuda().detach()
 
         with Timer("Elapsed time in update: %f"):
             # Main training code
-            if num_gpu==1:
-                trainer.dis_update(images_a, images_b, config)
-                trainer.gen_update(images_a, labels_a, pos_a, images_b, labels_b, pos_b, config, iterations)
-            else:
-                trainer.module.dis_update(images_a, images_b, config)
-                trainer.module.gen_update(images_a, labels_a, pos_a, images_b, labels_b, pos_b, config, iterations)
+            trainer.dis_update(images_a, images_b, config)
+            trainer.gen_update(images_a, labels_a, pos_a, images_b, labels_b, pos_b, config, iterations)
             torch.cuda.synchronize()
 
         # Dump training stats in log file
@@ -122,27 +128,18 @@ while True:
         # Write images
         if (iterations + 1) % config['image_save_iter'] == 0:
             with torch.no_grad():
-                if num_gpu==1:
-                    test_image_outputs = trainer.sample(test_display_images_a, test_display_images_b)
-                else:
-                    test_image_outputs = trainer.module.sample(test_display_images_a, test_display_images_b)
+                test_image_outputs = trainer.sample(test_display_images_a, test_display_images_b)
             write_2images(test_image_outputs, display_size, image_directory, 'test_%08d' % (iterations + 1))
             del test_image_outputs
 
         if (iterations + 1) % config['image_display_iter'] == 0:
             with torch.no_grad():
-                if num_gpu==1:
-                    image_outputs = trainer.sample(train_display_images_a, train_display_images_b)
-                else:
-                    image_outputs = trainer.module.sample(train_display_images_a, train_display_images_b)
+                image_outputs = trainer.sample(train_display_images_a, train_display_images_b)
             write_2images(image_outputs, display_size, image_directory, 'train_%08d' % (iterations + 1))
             del image_outputs
         # Save network weights
         if (iterations + 1) % config['snapshot_save_iter'] == 0:
-            if num_gpu==1:
-                trainer.save(checkpoint_directory, iterations)
-            else:
-                trainer.module.save(checkpoint_directory, iterations)
+            trainer.save(checkpoint_directory, iterations)
 
         iterations += 1
         if iterations >= max_iter:
@@ -151,8 +148,5 @@ while True:
     # Save network weights by epoch number
     nepoch = nepoch+1
     if(nepoch + 1) % 10 == 0:
-        if num_gpu==1:
-            trainer.save(checkpoint_directory, iterations)
-        else:
-            trainer.module.save(checkpoint_directory, iterations)
+        trainer.save(checkpoint_directory, iterations)
 

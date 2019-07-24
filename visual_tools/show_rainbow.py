@@ -9,12 +9,11 @@ from utils import get_config
 from trainer import DGNet_Trainer, to_gray
 import argparse
 from torch.autograd import Variable
-import torchvision.utils as vutils
 import sys
 import torch
 import os
 import numpy as np
-from torchvision import datasets, models, transforms
+from torchvision import datasets, transforms
 from PIL import Image
 
 name = 'E0.5new_reid0.5_w30000' 

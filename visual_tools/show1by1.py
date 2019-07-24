@@ -9,7 +9,6 @@ from utils import get_config
 from trainer import DGNet_Trainer, to_gray
 import argparse
 from torch.autograd import Variable
-import torchvision.utils as vutils
 import sys
 import torch
 import os

@@ -7,20 +7,13 @@ from torch.autograd import Variable
 import torch
 import torch.nn.functional as F
 from torchvision import models
-import copy
-from utils import weights_init, get_model_list, vgg_preprocess, load_vgg16, get_scheduler
+from utils import weights_init
 
 try:
     from itertools import izip as zip
 except ImportError: # will be 3.x series
     pass
 
-#fp16
-try:
-    import apex
-    from apex.fp16_utils import *
-except ImportError: # will be 3.x series
-    pass
 
 ##################################################################################
 # Discriminator
@@ -266,7 +259,7 @@ class VAEGen(nn.Module):
         pad_type = params['pad_type']
 
         # content encoder
-        self.enc = ContentEncoder(n_downsample, n_res, input_dim, dim, 'in', activ, pad_type=pad_type)
+        self.enc = ContentEncoder(n_downsample, n_res, input_dim, dim, 'in', activ, pad_type=pad_type, dropout=0, tanh=False, res_type='basic')
         self.dec = Decoder(n_downsample, n_res, self.enc.output_dim, input_dim, res_norm='in', activ=activ, pad_type=pad_type)
 
     def forward(self, images):
@@ -314,7 +307,7 @@ class StyleEncoder(nn.Module):
         return self.model(x)
 
 class ContentEncoder(nn.Module):
-    def __init__(self, n_downsample, n_res, input_dim, dim, norm, activ, pad_type, dropout, tanh, res_type='basic'):
+    def __init__(self, n_downsample, n_res, input_dim, dim, norm, activ, pad_type, dropout, tanh=False, res_type='basic'):
         super(ContentEncoder, self).__init__()
         self.model = []
         # Here I change the stride to 2.
@@ -328,7 +321,6 @@ class ContentEncoder(nn.Module):
             dim *= 2
         # residual blocks
         self.model += [ResBlocks(n_res, dim, norm=norm, activation=activ, pad_type=pad_type, res_type=res_type)]
-        #self.model += [nn.Dropout2d(p = dropout)]
         # 64 -> 128
         self.model += [ASPP(dim, norm=norm, activation=activ, pad_type=pad_type)]
         dim *= 2
@@ -829,6 +821,7 @@ class AdaptiveInstanceNorm2d(nn.Module):
         running_var = self.running_var.repeat(b).type_as(x)
         # Apply instance norm
         x_reshaped = x.contiguous().view(1, b * c, *x.size()[2:])
+        print(x_reshaped.get_device())
         out = F.batch_norm(
             x_reshaped, running_mean, running_var, self.weight, self.bias,
             True, self.momentum, self.eps)

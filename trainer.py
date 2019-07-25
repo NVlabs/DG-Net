@@ -409,12 +409,12 @@ class DGNet_Trainer(nn.Module):
             if hyperparameters['ID_style'] == 'normal':
                 _, p_a_student = self.id_a(scale2(x_ba_copy))
                 p_a_student = log_sm(p_a_student)
-                p_a_teacher = predict_label(self.teacher_model, scale2(x_ba_copy))
+                p_a_teacher = predict_label(self.teacher_model, scale2(x_ba_copy), num_class = hyperparameters['ID_class'], alabel = l_a, slabel = l_b, teacher_style = hyperparameters['teacher_style'])
                 self.loss_teacher = self.criterion_teacher(p_a_student, p_a_teacher) / p_a_student.size(0)
 
                 _, p_b_student = self.id_b(scale2(x_ab_copy))
                 p_b_student = log_sm(p_b_student)
-                p_b_teacher = predict_label(self.teacher_model, scale2(x_ab_copy))
+                p_b_teacher = predict_label(self.teacher_model, scale2(x_ab_copy), num_class = hyperparameters['ID_class'], alabel = l_b, slabel = l_a, teacher_style = hyperparameters['teacher_style'])
                 self.loss_teacher += self.criterion_teacher(p_b_student, p_b_teacher) / p_b_student.size(0)
             elif hyperparameters['ID_style'] == 'AB':
                 # normal teacher-student loss

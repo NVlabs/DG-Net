@@ -54,7 +54,7 @@ if num_gpu>1:
     #                                     world_size = 1, rank = 0)
     #trainer = torch.nn.parallel.DistributedDataParallel(trainer, device_ids=gpu_ids)
 
-    trainer.teacher_model = torch.nn.DataParallel(trainer.teacher_model, gpu_ids)
+    #trainer.teacher_model = torch.nn.DataParallel(trainer.teacher_model, gpu_ids)
     trainer.id_a = torch.nn.DataParallel(trainer.id_a, gpu_ids)
     trainer.gen_a.enc_content = torch.nn.DataParallel(trainer.gen_a.enc_content, gpu_ids)
     #trainer.gen_a.dec = torch.nn.DataParallel(trainer.gen_a.dec, gpu_ids)

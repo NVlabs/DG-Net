@@ -103,14 +103,16 @@ class MsImageDis(nn.Module):
             loss += torch.mean(outs0) - torch.mean(outs1)
             # progressive gan
             loss += Drift*( torch.sum(outs0**2) + torch.sum(outs1**2))
-            alpha = torch.FloatTensor(input_fake.shape).uniform_(0., 1.)
-            alpha = alpha.cuda()
-            differences = input_fake - input_real
-            interpolates =  Variable(input_real + (alpha*differences), requires_grad=True)
-            dis_interpolates = self.forward(interpolates) 
-            gradient_penalty = self.compute_grad2(dis_interpolates, interpolates).mean()
-            loss += LAMBDA*gradient_penalty
-            return loss
+            #alpha = torch.FloatTensor(input_fake.shape).uniform_(0., 1.)
+            #alpha = alpha.cuda()
+            #differences = input_fake - input_real
+            #interpolates =  Variable(input_real + (alpha*differences), requires_grad=True)
+            #dis_interpolates = self.forward(interpolates) 
+            #gradient_penalty = self.compute_grad2(dis_interpolates, interpolates).mean()
+            #reg += LAMBDA*gradient_penalty 
+            reg += LAMBDA* self.compute_grad2(outs1, input_real).mean() # I suggest Lambda=0.1 for wgan
+            loss = loss + reg
+            return loss, reg
 
         for it, (out0, out1) in enumerate(zip(outs0, outs1)):
             if self.gan_type == 'lsgan':
@@ -122,6 +124,7 @@ class MsImageDis(nn.Module):
                 all1 = Variable(torch.ones_like(out1.data).cuda(), requires_grad=False)
                 loss += torch.mean(F.binary_cross_entropy(F.sigmoid(out0), all0) +
                                    F.binary_cross_entropy(F.sigmoid(out1), all1))
+                reg += LAMBDA* self.compute_grad2(F.sigmoid(out1), input_real).mean()
             else:
                 assert 0, "Unsupported GAN type: {}".format(self.gan_type)
 

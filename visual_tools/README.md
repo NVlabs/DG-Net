@@ -13,4 +13,6 @@ python visual_tools/show_rainbow.py
 
 - `show_smooth.py` generates Figure 5 of the paper.
 
+- `show_smooth_structure.py` generates Figure 9 of the paper.
+
 - `show1by1.py` swaps the codes of all images in one folder (many to many) and save the generated image one by one. 

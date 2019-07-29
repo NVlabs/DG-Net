@@ -6,6 +6,7 @@ from torch import nn
 from torch.autograd import Variable
 import torch
 import torch.nn.functional as F
+from torch.nn.utils.spectral_norm import SpectralNorm
 from torchvision import models
 from utils import weights_init
 

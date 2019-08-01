@@ -12,6 +12,7 @@ Joint Discriminative and Generative Learning for Person Re-identification, CVPR 
 
 ## Table of contents
 * [License](#license)
+* [News](#news)
 * [Features](#features)
 * [Prerequisites](#prerequisites)
 * [Getting Started](#getting-started)
@@ -33,8 +34,12 @@ Licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-
 
 The code is released for academic research use only. For commercial use, please contact [researchinquiries@nvidia.com](researchinquiries@nvidia.com).
 
+## News
+- 1 Aug 2019: We add the support for multiple-gpu training. You may simply run `python train.py --config configs/latest.yaml  --gpu_ids 0,1` to check out it.
+
 ## Features
 We have supported:
+- Multiple-GPU Training (with fp32 only)
 - Float16 to save GPU memory based on [APEX](https://github.com/NVIDIA/apex)
 - Multiple query evaluation
 - Random erasing

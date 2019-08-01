@@ -34,8 +34,8 @@ Copyright (C) 2019 NVIDIA Corporation. All rights reserved. Licensed under the [
 
 ## Features
 We have supported:
-- Multi-GPU training (fp32 only)
-- [APEX](https://github.com/NVIDIA/apex) to save GPU memory (mixed fp16/fp32)
+- Multi-GPU training (fp32)
+- [APEX](https://github.com/NVIDIA/apex) to save GPU memory (fp16/fp32)
 - Multiple query evaluation
 - Random erasing
 - Visualize training curves

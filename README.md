@@ -44,7 +44,7 @@ We have supported:
 ## Prerequisites
 
 - Python 3.6
-- GPU memory >= 15G 
+- GPU memory >= 15G (fp32)
 - GPU memory >= 10G (fp16/fp32)
 - NumPy
 - PyTorch 1.0+

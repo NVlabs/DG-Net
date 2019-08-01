@@ -89,11 +89,11 @@ class MsImageDis(nn.Module):
              outputs = torch.squeeze(outputs)
         return outputs
 
-    def calc_dis_loss(self, input_fake, input_real):
+    def calc_dis_loss(self, model, input_fake, input_real):
         # calculate the loss to train D
         input_real.requires_grad_()
-        outs0 = self.forward(input_fake)
-        outs1 = self.forward(input_real)
+        outs0 = model.forward(input_fake)
+        outs1 = model.forward(input_real)
         loss = 0
         reg = 0
         Drift = 0.001
@@ -131,7 +131,7 @@ class MsImageDis(nn.Module):
         loss = loss+reg
         return loss, reg
 
-    def calc_gen_loss(self, input_fake):
+    def calc_gen_loss(self, model, input_fake):
         # calculate the loss to train G
         outs0 = self.forward(input_fake)
         loss = 0

@@ -133,7 +133,7 @@ class MsImageDis(nn.Module):
 
     def calc_gen_loss(self, model, input_fake):
         # calculate the loss to train G
-        outs0 = self.forward(input_fake)
+        outs0 = model.forward(input_fake)
         loss = 0
         Drift = 0.001
         if self.gan_type == 'wgan':

@@ -44,8 +44,8 @@ We have supported:
 ## Prerequisites
 
 - Python 3.6
-- GPU Memory >= 15G 
-- GPU Memory >= 10G (for fp16)
+- GPU memory >= 15G 
+- GPU memory >= 10G (for fp16)
 - NumPy
 - PyTorch 1.0+
 - [Optional] APEX (for fp16)

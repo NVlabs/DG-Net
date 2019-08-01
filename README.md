@@ -45,10 +45,10 @@ We have supported:
 
 - Python 3.6
 - GPU memory >= 15G 
-- GPU memory >= 10G (for fp16)
+- GPU memory >= 10G (fp16/fp32)
 - NumPy
 - PyTorch 1.0+
-- [Optional] APEX (for fp16)
+- [Optional] APEX (fp16/fp32)
 
 ## Getting Started
 ### Installation

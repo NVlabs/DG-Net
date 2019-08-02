@@ -4,7 +4,6 @@ Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses
 """
 from utils import get_all_data_loaders, prepare_sub_folder, write_loss, get_config, write_2images, Timer
 import argparse
-from torch.autograd import Variable
 from trainer import DGNet_Trainer
 import torch.backends.cudnn as cudnn
 import torch

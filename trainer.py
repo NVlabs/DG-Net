@@ -2,26 +2,23 @@
 Copyright (C) 2019 NVIDIA Corporation.  All rights reserved.
 Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
 """
-from networks import AdaINGen, MsImageDis, VAEGen
+from networks import AdaINGen, MsImageDis
 from reIDmodel import ft_net, ft_netAB, PCB
-from utils import weights_init, get_model_list, vgg_preprocess, load_vgg16, get_scheduler
+from utils import get_model_list, vgg_preprocess, load_vgg16, get_scheduler
 from torch.autograd import Variable
 import torch
 import torch.nn as nn
-import torchvision
 import copy
 import os
 import cv2
 import numpy as np
 from random_erasing import RandomErasing
-from PIL import Image
 import random
 import yaml
 
 #fp16
 try:
-    import apex
-    from apex import amp, optimizers
+    from apex import amp
     from apex.fp16_utils import *
 except ImportError:
     print('This is not an error. If you want to use low precision, i.e., fp16, please install the apex with cuda support (https://github.com/NVIDIA/apex) and update pytorch to 1.0')

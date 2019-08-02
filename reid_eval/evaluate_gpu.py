@@ -7,7 +7,6 @@ Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses
 import scipy.io
 import torch
 import numpy as np
-import time
 import os
 import matplotlib
 matplotlib.use('agg')

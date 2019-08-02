@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 from torch.autograd import Variable
 from torch.optim import lr_scheduler
 from torchvision import transforms
-from data import ImageFilelist, ImageFolder
+from data import ImageFilelist
 from reIDfolder import ReIDFolder
 import torch
 import os

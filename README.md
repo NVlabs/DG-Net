@@ -65,7 +65,7 @@ git clone https://github.com/NVIDIA/apex.git
 cd apex
 python setup.py install --cuda_ext --cpp_ext
 ```
-- Clone this repo
+- Clone this repo:
 ```bash
 git clone https://github.com/NVlabs/DG-Net.git
 cd DG-Net/

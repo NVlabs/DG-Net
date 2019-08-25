@@ -102,7 +102,7 @@ We provide our trained model. You may download it from [GoogleDrive](https://dri
 | mAP    | 86.0% | 74.8% | 52.3% | 61.1% |
 
 
-- Transfer learning     
+- Direct transfer learning     
 To verify the generalizability of DG-Net, we train the model on dataset A and directly test the model on dataset B (with no adaptation). 
 We denote the direct transfer learning protocol as `A → B`.
 

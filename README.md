@@ -106,7 +106,7 @@ We provide our trained model. You may download it from [GoogleDrive](https://dri
 To verify the generalizability of DG-Net, we train the model on dataset A and directly test the model on dataset B (with no adaptation). 
 We denote the direct transfer learning protocol as `A → B`.
 
-|   | Market → Duke  | Duke → Market  | Market → MSMT  | MSMT → Market  | Duke → MSMT    | MSMT → Duke    |
+|   | Market→Duke  | Duke→Market  | Market→MSMT  | MSMT→Market  | Duke→MSMT    | MSMT→Duke    |
 |---|----------------|----------------| -------------- |----------------| -------------- |----------------|
 | Rank@1  | 42.62%   | 56.12%         | 17.11%         | 61.76%         | 20.59%         | 61.89%         |
 | Rank@5  | 58.57%   | 72.18%         | 26.66%         | 77.67%         | 31.67%         | 75.81%         |

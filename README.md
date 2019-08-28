@@ -26,7 +26,7 @@ Joint Discriminative and Generative Learning for Person Re-identification, CVPR 
 * [License](#license)
 
 ## News
-- 08/24/2019: We add the direct transfer learning results [here](https://github.com/NVlabs/DG-Net#person-re-id-evaluation).
+- 08/24/2019: We add the direct transfer learning results of DG-Net [here](https://github.com/NVlabs/DG-Net#person-re-id-evaluation).
 - 08/01/2019: We add the support of multi-GPU training: `python train.py --config configs/latest.yaml  --gpu_ids 0,1`.
 
 ## Features

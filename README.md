@@ -11,7 +11,6 @@ Joint Discriminative and Generative Learning for Person Re-identification, CVPR 
 [Zhedong Zheng](http://zdzheng.xyz/), [Xiaodong Yang](https://xiaodongyang.org/), [Zhiding Yu](https://chrisding.github.io/), [Liang Zheng](http://liangzheng.com.cn/), [Yi Yang](https://www.uts.edu.au/staff/yi.yang), [Jan Kautz](http://jankautz.com/) <br>
 
 ## Table of contents
-* [License](#license)
 * [News](#news)
 * [Features](#features)
 * [Prerequisites](#prerequisites)
@@ -24,10 +23,7 @@ Joint Discriminative and Generative Learning for Person Re-identification, CVPR 
 * [Tips](#tips)
 * [Citation](#citation)
 * [Related Work](#related-work)
-
-## License
-
-Copyright (C) 2019 NVIDIA Corporation. All rights reserved. Licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode) (**Attribution-NonCommercial-ShareAlike 4.0 International**). The code is released for academic research use only. For commercial use, please contact [researchinquiries@nvidia.com](researchinquiries@nvidia.com).
+* [License](#license)
 
 ## News
 - 08/24/2019: We add the direct transfer learning results [here](https://github.com/NVlabs/DG-Net#person-re-id-evaluation).
@@ -177,3 +173,6 @@ Please cite this paper if it helps your research:
 
 ## Related Work
 Other GAN-based methods compared in the paper include [LSGAN](https://github.com/layumi/DCGAN-pytorch), [FDGAN](https://github.com/layumi/FD-GAN) and [PG2GAN](https://github.com/charliememory/Pose-Guided-Person-Image-Generation). We forked the code and made some changes for evaluatation, thank the authors for their great work. We would also like to thank to the great projects in [person re-id baseline](https://github.com/layumi/Person_reID_baseline_pytorch), [MUNIT](https://github.com/NVlabs/MUNIT) and [DRIT](https://github.com/HsinYingLee/DRIT).
+
+## License
+Copyright (C) 2019 NVIDIA Corporation. All rights reserved. Licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode) (**Attribution-NonCommercial-ShareAlike 4.0 International**). The code is released for academic research use only. For commercial use, please contact [researchinquiries@nvidia.com](researchinquiries@nvidia.com).

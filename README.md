@@ -71,7 +71,7 @@ cd DG-Net/
 Our code is tested on PyTorch 1.0.0+ and torchvision 0.2.1+ .
 
 ### Dataset Preparation
-Download the dataset [Market-1501](http://www.liangzheng.com.cn/Project/project_reid.html) [[Google]](https://drive.google.com/file/d/0B8-rUzbwVRk0c054eEozWG9COHM/view) [[Baidu]](https://pan.baidu.com/s/1ntIi2Op)
+Download the dataset [Market-1501](http://www.liangzheng.com.cn/Project/project_reid.html) [[Google Drive]](https://drive.google.com/file/d/0B8-rUzbwVRk0c054eEozWG9COHM/view) [[Baidu Disk]](https://pan.baidu.com/s/1ntIi2Op)
 
 Preparation: put the images with the same id in one folder. You may use 
 ```bash

@@ -163,10 +163,10 @@ Note the format of camera id and number of cameras. For some datasets (e.g., MSM
 ## Citation
 Please cite this paper if it helps your research:
 ```
-@article{zheng2019joint,
+@inproceedings{zheng2019joint,
   title={Joint discriminative and generative learning for person re-identification},
   author={Zheng, Zhedong and Yang, Xiaodong and Yu, Zhiding and Zheng, Liang and Yang, Yi and Kautz, Jan},
-  journal={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
   year={2019}
 }
 ```

@@ -118,7 +118,10 @@ while True:
         # Dump training stats in log file
         if (iterations + 1) % config['log_iter'] == 0:
             print("\033[1m Epoch: %02d Iteration: %08d/%08d \033[0m" % (nepoch, iterations + 1, max_iter), end=" ")
-            write_loss(iterations, trainer, train_writer)
+            if num_gpu==1:
+                write_loss(iterations, trainer, train_writer)
+            else:
+                write_loss(iterations, trainer.module, train_writer)
 
         # Write images
         if (iterations + 1) % config['image_save_iter'] == 0:

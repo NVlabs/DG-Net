@@ -163,7 +163,7 @@ Note the format of camera id and number of cameras. For some datasets (e.g., MSM
 
 ## Citation
 Please cite this paper if it helps your research:
-```
+```bibtex
 @inproceedings{zheng2019joint,
   title={Joint discriminative and generative learning for person re-identification},
   author={Zheng, Zhedong and Yang, Xiaodong and Yu, Zhiding and Zheng, Liang and Yang, Yi and Kautz, Jan},

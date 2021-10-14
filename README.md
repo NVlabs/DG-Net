@@ -4,7 +4,6 @@
 
 ## Joint Discriminative and Generative Learning for Person Re-identification
 ![](NxN.jpg)
-![]<img src='Demo.gif' width='800'/>
 ![](Demo.gif)
 
 [[Project]](http://zdzheng.xyz/DG-Net/) [[Paper]](https://arxiv.org/abs/1904.07223) [[YouTube]](https://www.youtube.com/watch?v=ubCrEAIpQs4) [[Bilibili]](https://www.bilibili.com/video/av51439240) [[Poster]](http://zdzheng.xyz/images/DGNet_poster.pdf)

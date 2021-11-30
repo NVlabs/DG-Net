@@ -161,10 +161,11 @@ We provide our generated images and make a large-scale synthetic dataset called 
 | #images| 128,307 |  12,936     |
 
 Quick Download via [gdrive](https://github.com/prasmussen/gdrive)
-```
+```bash
 wget https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_386.tar.gz
 tar -xzvf gdrive_2.1.1_linux_386.tar.gz
 gdrive download 126Gn90Tzpk3zWp2c7OBYPKc-ZjhptKDo
+unzip DG-Market.zip
 ```
 
 ## Tips

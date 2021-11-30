@@ -160,6 +160,11 @@ We provide our generated images and make a large-scale synthetic dataset called 
 | #identity| 	-   |  751        |
 | #images| 128,307 |  12,936     |
 
+Quick Download via [gdrive](https://github.com/prasmussen/gdrive)
+```
+gdrive download 126Gn90Tzpk3zWp2c7OBYPKc-ZjhptKDo
+```
+
 ## Tips
 Note the format of camera id and number of cameras. For some datasets (e.g., MSMT17), there are more than 10 cameras. You need to modify the preparation and evaluation code to read the double-digit camera id. For some vehicle re-id datasets (e.g., VeRi) having different naming rules, you also need to modify the preparation and evaluation code.
 

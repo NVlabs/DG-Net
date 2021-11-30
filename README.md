@@ -162,6 +162,8 @@ We provide our generated images and make a large-scale synthetic dataset called 
 
 Quick Download via [gdrive](https://github.com/prasmussen/gdrive)
 ```
+wget https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_386.tar.gz
+tar -xzvf gdrive_2.1.1_linux_386.tar.gz
 gdrive download 126Gn90Tzpk3zWp2c7OBYPKc-ZjhptKDo
 ```
 

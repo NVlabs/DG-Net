@@ -162,7 +162,7 @@ def load_network(network, name):
 def load_config(name):
     config_path = os.path.join('./models',name,'opts.yaml')
     with open(config_path, 'r') as stream:
-        config = yaml.load(stream)
+        config = yaml.safe_load(stream)
     return config
 
 

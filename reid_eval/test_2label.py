@@ -179,7 +179,7 @@ print('-------test-----------')
 ###load config###
 config_path = os.path.join('../outputs',name,'config.yaml')
 with open(config_path, 'r') as stream:
-    config = yaml.load(stream)
+    config = yaml.safe_load(stream)
 
 model_structure = ft_netAB(config['ID_class'], norm=config['norm_id'], stride=config['ID_stride'], pool=config['pool'])
 

@@ -97,6 +97,7 @@ train_save_path = download_path + '/pytorch/train'
 val_save_path = download_path + '/pytorch/val'
 if not os.path.isdir(train_save_path):
     os.mkdir(train_save_path)
+if not os.path.isdir(val_save_path):
     os.mkdir(val_save_path)
 
 for root, dirs, files in os.walk(train_path, topdown=True):

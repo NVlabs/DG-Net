@@ -142,5 +142,5 @@ for i in range(count):
     pic = np.concatenate((pic, white_col), axis=1)
 
 pic = Image.fromarray(pic.astype('uint8'))
-pic.save('swap.jpg')
+pic.save(os.path.join(opts.output_folder, 'swap.jpg'))
 

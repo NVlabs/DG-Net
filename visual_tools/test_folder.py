@@ -120,9 +120,11 @@ with torch.no_grad():
         for data, data2, path in zip(dataloader_content, dataloader_structure, image_paths):
             name = os.path.basename(path[0])
             id_img, label = data
+            label = label.item()
             id_img_flip = Variable(fliplr(id_img).cuda())
             id_img = Variable(id_img.cuda())
             bg_img, label2 = data2
+            label2 = label2.item()
             if config['single'] == 'gray':
                 bg_img = gray(bg_img)
             bg_img = Variable(bg_img.cuda())

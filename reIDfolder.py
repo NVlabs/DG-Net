@@ -37,7 +37,7 @@ class ReIDFolder(datasets.ImageFolder):
         neg_index = np.argwhere(self.targets != target)
         neg_index = neg_index.flatten()
         rand = random.randint(0,len(neg_index)-1)
-        return self.samples[neg_index[rand]]
+        return self.samples[neg_index[rand]][0]
 
     def __getitem__(self, index):
         path, target = self.samples[index]

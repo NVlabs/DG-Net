@@ -343,6 +343,7 @@ class ContentEncoder_ImageNet(nn.Module):
         self.model.layer4[0].downsample[0].stride = (1,1)
         self.model.layer4[0].conv2.stride = (1,1) 
         # (256,128) ----> (16,8)
+        self.output_dim = 2048
 
     def forward(self, x):
         x = self.model.conv1(x)

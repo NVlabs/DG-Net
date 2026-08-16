@@ -237,11 +237,10 @@ def load_vgg16(model_dir):
 
 
 def vgg_preprocess(batch):
-    tensortype = type(batch.data)
     (r, g, b) = torch.chunk(batch, 3, dim = 1)
     batch = torch.cat((b, g, r), dim = 1) # convert RGB to BGR
     batch = (batch + 1) * 255 * 0.5 # [-1, 1] -> [0, 255]
-    mean = tensortype(batch.data.size())
+    mean = torch.empty(batch.data.size(), dtype=batch.dtype, device=batch.device)
     mean[:, 0, :, :] = 103.939
     mean[:, 1, :, :] = 116.779
     mean[:, 2, :, :] = 123.680
@@ -261,7 +260,7 @@ def get_scheduler(optimizer, hyperparameters, iterations=-1):
         scheduler = lr_scheduler.MultiStepLR(optimizer, milestones=[step, step+step//2, step+step//2+step//4],
                                         gamma=hyperparameters['gamma'], last_epoch=iterations)
     else:
-        return NotImplementedError('learning rate policy [%s] is not implemented', hyperparameters['lr_policy'])
+        raise NotImplementedError('learning rate policy [%s] is not implemented' % hyperparameters['lr_policy'])
     return scheduler
 
 

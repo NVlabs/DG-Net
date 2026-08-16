@@ -17,6 +17,8 @@ import yaml
 import numpy as np
 import torch.nn.init as init
 import time
+from torch.utils.serialization import load_lua
+from networks import Vgg16
 # Methods
 # get_all_data_loaders      : primary data loader interface (load trainA, testA, trainB, testB)
 # get_data_loader_list      : list-based data loader
@@ -212,7 +214,7 @@ def get_model_list(dirname, key):
         return None
     gen_models = [os.path.join(dirname, f) for f in os.listdir(dirname) if
                   os.path.isfile(os.path.join(dirname, f)) and key in f and ".pt" in f]
-    if gen_models is None:
+    if not gen_models:
         return None
     gen_models.sort()
     last_model_name = gen_models[-1]
@@ -261,7 +263,7 @@ def get_scheduler(optimizer, hyperparameters, iterations=-1):
         scheduler = lr_scheduler.MultiStepLR(optimizer, milestones=[step, step+step//2, step+step//2+step//4],
                                         gamma=hyperparameters['gamma'], last_epoch=iterations)
     else:
-        return NotImplementedError('learning rate policy [%s] is not implemented', hyperparameters['lr_policy'])
+        raise NotImplementedError('learning rate policy [%s] is not implemented' % hyperparameters['lr_policy'])
     return scheduler
 
 

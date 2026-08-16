@@ -102,7 +102,7 @@ class MsImageDis(nn.Module):
         if self.gan_type == 'wgan':
             loss += torch.mean(outs0) - torch.mean(outs1)
             # progressive gan
-            loss += Drift*( torch.sum(outs0**2) + torch.sum(outs1**2))
+            loss += Drift*( torch.mean(outs0**2) + torch.mean(outs1**2))
             #alpha = torch.FloatTensor(input_fake.shape).uniform_(0., 1.)
             #alpha = alpha.cuda()
             #differences = input_fake - input_real
@@ -197,7 +197,7 @@ class AdaINGen(nn.Module):
         elif which_dec =='parallel':
             self.dec = Decoder(n_downsample, n_res, self.output_dim, 3, dropout=dropout, res_norm='adain', activ=activ, pad_type=pad_type, res_type='parallel', non_local = non_local, fp16 = fp16)
         else:
-            ('unkonw decoder type')
+            raise ValueError('unknown decoder type')
 
         # MLP to generate AdaIN parameters
         self.mlp_w1 = MLP(id_dim, 2*self.output_dim, mlp_dim, 3, norm=mlp_norm, activ=activ)
@@ -446,7 +446,7 @@ class ResBlock(nn.Module):
             model += [Parallel2dBlock(dim ,dim, 3, 1, 1, norm=norm, activation=activation, pad_type=pad_type)]
             model += [Parallel2dBlock(dim ,dim, 3, 1, 1, norm=norm, activation='none', pad_type=pad_type)]
         else:
-            ('unkown block type')
+            raise ValueError('unknown block type')
         self.res_type = res_type
         self.model = nn.Sequential(*model)
         if res_type=='nonlocal':
@@ -847,10 +847,8 @@ class LayerNorm(nn.Module):
     def forward(self, x):
         shape = [-1] + [1] * (x.dim() - 1)
         if x.type() == 'torch.cuda.HalfTensor': # For Safety
-            mean = x.view(-1).float().mean().view(*shape)
-            std = x.view(-1).float().std().view(*shape)
-            mean = mean.half()
-            std = std.half()
+            mean = x.view(x.size(0), -1).float().mean(1).view(*shape).half()
+            std = x.view(x.size(0), -1).float().std(1).view(*shape).half()
         else:
             mean = x.view(x.size(0), -1).mean(1).view(*shape)
             std = x.view(x.size(0), -1).std(1).view(*shape)

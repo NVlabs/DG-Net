@@ -49,6 +49,7 @@ if opts.trainer == 'DGNet':
     trainer.cuda()
 
 random.seed(7) #fix random result
+torch.manual_seed(7)
 train_loader_a, train_loader_b, test_loader_a, test_loader_b = get_all_data_loaders(config)
 train_a_rand = random.permutation(train_loader_a.dataset.img_num)[0:display_size] 
 train_b_rand = random.permutation(train_loader_b.dataset.img_num)[0:display_size] 
@@ -89,7 +90,7 @@ print('Note that dataloader may hang with too much nworkers.')
 if num_gpu>1:
     print('Now you are using %d gpus.'%num_gpu)
     trainer.dis_a = torch.nn.DataParallel(trainer.dis_a, gpu_ids)
-    trainer.dis_b = trainer.dis_a
+    trainer.dis_b = torch.nn.DataParallel(trainer.dis_b, gpu_ids)
     trainer = torch.nn.DataParallel(trainer, gpu_ids)
 
 while True:

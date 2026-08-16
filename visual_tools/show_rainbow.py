@@ -141,5 +141,5 @@ for i in range(num):
 
 pic = np.concatenate((first_row, white_row, pic), axis=0)
 pic = Image.fromarray(pic.astype('uint8'))
-pic.save('rainbow_%d.jpg'%num)
+pic.save(os.path.join(opts.output_folder, 'rainbow_%d.jpg'%num))
 

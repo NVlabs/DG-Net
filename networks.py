@@ -267,7 +267,7 @@ class VAEGen(nn.Module):
 
     def forward(self, images):
         # This is a reduced VAE implementation where we assume the outputs are multivariate Gaussian distribution with mean = hiddens and std_dev = all ones.
-        hiddens = self.encode(images)
+        hiddens, _ = self.encode(images)
         if self.training == True:
             noise = Variable(torch.randn(hiddens.size()).cuda(hiddens.data.get_device()))
             images_recon = self.decode(hiddens + noise)
@@ -847,10 +847,8 @@ class LayerNorm(nn.Module):
     def forward(self, x):
         shape = [-1] + [1] * (x.dim() - 1)
         if x.type() == 'torch.cuda.HalfTensor': # For Safety
-            mean = x.view(-1).float().mean().view(*shape)
-            std = x.view(-1).float().std().view(*shape)
-            mean = mean.half()
-            std = std.half()
+            mean = x.view(x.size(0), -1).float().mean(1).view(*shape).half()
+            std = x.view(x.size(0), -1).float().std(1).view(*shape).half()
         else:
             mean = x.view(x.size(0), -1).mean(1).view(*shape)
             std = x.view(x.size(0), -1).std(1).view(*shape)

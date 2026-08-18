@@ -117,12 +117,7 @@ def extract_feature(model,dataloaders):
         img, label = data
         n, c, h, w = img.size()
         count += n
-        if opt.use_dense:
-            ff = torch.FloatTensor(n,1024).zero_()
-        else:
-            ff = torch.FloatTensor(n,1024).zero_()
-        if opt.PCB:
-            ff = torch.FloatTensor(n,2048,6).zero_() # we have six parts
+        ff = torch.FloatTensor(n,1024).zero_()
         for i in range(2):
             if(i==1):
                 img = fliplr(img)
@@ -138,13 +133,6 @@ def extract_feature(model,dataloaders):
         ff[:, 512:1024] = norm(ff[:, 512:1024])
 
         # norm feature
-        if opt.PCB:
-            # feature size (n,2048,6)
-            # 1. To treat every part equally, I calculate the norm for every 2048-dim part feature.
-            # 2. To keep the cosine score==1, sqrt(6) is added to norm the whole feature (2048*6).
-            fnorm = torch.norm(ff, p=2, dim=1, keepdim=True) * np.sqrt(6) 
-            ff = ff.div(fnorm.expand_as(ff))
-            ff = ff.view(ff.size(0), -1)
 
         features = torch.cat((features,ff), 0)
     return features
@@ -181,10 +169,8 @@ config_path = os.path.join('../outputs',name,'config.yaml')
 with open(config_path, 'r') as stream:
     config = yaml.safe_load(stream)
 
+# This script only supports ft_netAB; --use_dense/--PCB are ignored.
 model_structure = ft_netAB(config['ID_class'], norm=config['norm_id'], stride=config['ID_stride'], pool=config['pool'])
-
-if opt.PCB:
-    model_structure = PCB(config['ID_class'])
 
 model = load_network(model_structure)
 

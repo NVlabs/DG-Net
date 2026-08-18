@@ -126,8 +126,8 @@ with torch.no_grad():
 # save long image
 pic = np.concatenate( (im[0], im[1]) , axis=0)
 pic = Image.fromarray(pic.astype('uint8'))
-pic.save('smooth.jpg')
+pic.save(os.path.join(opts.output_folder, 'smooth.jpg'))
 
 # save gif
-imageio.mimsave('./smooth.gif', gif)
+imageio.mimsave(os.path.join(opts.output_folder, 'smooth.gif'), [frame.astype(np.uint8) for frame in gif])
 
